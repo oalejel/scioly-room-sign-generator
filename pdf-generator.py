@@ -44,9 +44,9 @@ def make_pdf_file(output_filename, event_name, img_name):
     
     # draw event image in bottom center 
     c.drawImage(img_name, 
-                x=0, 
+                x=MARGIN, 
                 y=50, 
-                width=PAGE_WIDTH,
+                width=PAGE_WIDTH - (2 * MARGIN),
                 height=300,
                 preserveAspectRatio=True)
     
