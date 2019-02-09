@@ -13,10 +13,12 @@ Example: { "event-names": [ ... ] }
 NOTE: check to make sure images match titles after running!
 
 
-FOR TEAM HOMEROOM SIGNS:
+FOR HOMEROOM SIGNS:
 It's ok if you have duplicate team names; the program will throw those out.
 Make sure school-names has an array of strings with key "school-names"
 Example: { "school-names": [ ... ] }
+
+NOTE: you can also include room names like "GRADING ROOM" in the array.
 """
 
 import os
@@ -178,7 +180,7 @@ def make_homeroom_pdf(output_filename, school_name):
     # add a header that says Science Olympiad with our logo on right 
     header_text_height = 25
     c.setFont("UniversCondensed", header_text_height)
-    c.drawString(MARGIN, PAGE_HEIGHT - (MARGIN + header_text_height), "Science Olympiad")
+    c.drawString(MARGIN, PAGE_HEIGHT - (MARGIN + header_text_height), "UMSO")
     
     # draw icon in top right
     img_aspect_ratio = 1.10376 # height / 1.10376
@@ -201,7 +203,7 @@ def make_homeroom_pdf(output_filename, school_name):
     width_limit = PAGE_WIDTH - (2*MARGIN)
     adjusted_text = fit_text_to_width(c, width_limit, school_name)
     
-    vertical_offset = PAGE_HEIGHT - title_height * 3.4
+    vertical_offset = PAGE_HEIGHT - title_height * 4
     lines = adjusted_text.split('\n')
     vertical_offset += (len(lines) // 2) * title_height
     
@@ -215,7 +217,7 @@ def make_homeroom_pdf(output_filename, school_name):
                 x=MARGIN, 
                 y=25,
                 width=width_limit,
-                height=275,
+                height=200,
                 preserveAspectRatio=True);
     
     c.showPage()
